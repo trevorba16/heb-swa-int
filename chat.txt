@@ -1,0 +1,73 @@
+Here’s a high-level plan to build your DSR Senior Developer Take-Home Project as described:
+
+Database (PostgreSQL in Docker)
+
+Create a Dockerized PostgreSQL instance.
+Design a table (e.g., "records") with fields suitable for large datasets.
+Provide a sample CSV file for uploads.
+Backend API (Python + FastAPI)
+
+Dockerize the FastAPI app.
+Endpoints:
+POST /upload: Accepts CSV file uploads, processes them efficiently (streaming, chunked inserts).
+GET /records: Returns paginated, filterable data.
+Implement basic authentication with two roles (uploader/viewer).
+Add error handling, logging, and validation.
+Frontend (React)
+
+Dockerize the React app.
+Login screen (basic auth).
+Upload screen (visible only to uploaders).
+Data table with filtering and pagination.
+Docker Compose
+
+Compose file to orchestrate all services.
+README with clear instructions.
+Next, I’ll scaffold the project structure and start with the Docker Compose and database setup.
+
+Created backend
+
+Created frontend
+
+Created db
+
+Created docker-compose.yml
+
+Created init.sql
+
+Created sample.csv
+
+Created README.md
+
+README.md+43-0
+Created Dockerfile
+
+Created requirements.txt
+
+Created main.py
+
+Created Dockerfile
+
+Created package.json
+
+Created src
+
+Created Login.js
+
+Created Upload.js
+
+Created DataTable.js
+
+Created App.js
+
+Created index.js
+
+Created index.html
+
+The project is now scaffolded with:
+
+Docker Compose for PostgreSQL, FastAPI backend, and React frontend
+Database schema and sample CSV
+FastAPI backend with secure endpoints, file upload, filtering, and pagination
+React frontend with login, upload (uploader only), and data table
+You can now run docker compose build and docker compose up as described in the README to start the application. Let me know if you want to add tests, logging, or any enhancements!

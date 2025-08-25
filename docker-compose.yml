@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: dsr_user
+      POSTGRES_PASSWORD: dsr_pass
+      POSTGRES_DB: dsr_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  backend:
+    build: ./backend
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://dsr_user:dsr_pass@db:5432/dsr_db
+    ports:
+      - "8000:8000"
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
