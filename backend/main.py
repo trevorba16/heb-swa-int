@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Optional
 import psycopg2
 import csv
-from io import TextIOWrapper
+from io import TextIOWrapper, StringIO
 from starlette.responses import JSONResponse
 
 app = FastAPI()
@@ -46,14 +46,24 @@ def upload_csv(file: UploadFile = File(...), user=Depends(get_current_user)):
     try:
         conn = get_db_conn()
         cur = conn.cursor()
-        reader = csv.DictReader(TextIOWrapper(file.file, encoding="utf-8"))
+        try:
+            file.file.seek(0)
+            content = file.file.read()
+            text_stream = StringIO(content.decode("utf-8"))
+            reader = csv.DictReader(text_stream)
+        except Exception as e:
+            print("Error creating TextIOWrapper:", e)
+        
+        print(4)
         rows = []
         for row in reader:
+            print(5)
             rows.append((row["name"], int(row["value"])))
             if len(rows) >= 1000:
                 cur.executemany("INSERT INTO records (name, value) VALUES (%s, %s)", rows)
                 rows = []
         if rows:
+            print(6)
             cur.executemany("INSERT INTO records (name, value) VALUES (%s, %s)", rows)
         conn.commit()
         cur.close()
