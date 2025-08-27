@@ -28,8 +28,8 @@ USERS = {
     "": {"password": "", "role": "uploader"},
 }
 
+# SQL statements
 insert_sql = "INSERT INTO musician (name, birth_year, band_id, instrument_id) VALUES (%s, %s, (SELECT id FROM band WHERE name = %s), (SELECT id FROM instrument WHERE name = %s));"
-
 select_sql = """SELECT musician.id, musician.name, musician.birth_year, instrument.name, instrument.type, band.name, band.genre, band.formed_year FROM musician inner join instrument on musician.instrument_id = instrument.id inner join band on musician.band_id = band.id WHERE 1=1"""
 
 # Database connection

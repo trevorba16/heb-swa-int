@@ -2,7 +2,7 @@
 
 ## Overview
 - Database: PostgreSQL
-- Backend: Python, FastAPI, Pydantic
+- Backend: Python, FastAPI
 - Frontend: React
 
 ## Quick Start
@@ -14,7 +14,7 @@
 2. Access:
 	- Frontend: http://localhost:3000
 	- Backend API: http://localhost:8000/docs
-	- Database: localhost:5432 (user: dsr_user, pass: dsr_pass, db: dsr_db) # TODO: Fix UN/PW
+	- Database: localhost:5432 (user: dsr_user, pass: dsr_pass, db: dsr_db) 
 
 ## Sample Data
 `db/sample.csv`.
@@ -25,6 +25,5 @@
 	- Viewer: View
 
 ## Notes
-- For large CSV uploads, the backend processes files in a memory-efficient way.  # TODO: Review
-- Filtering and pagination are supported on the data endpoint.
+
 # heb-swa-int
