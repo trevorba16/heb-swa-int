@@ -25,5 +25,7 @@
 	- Viewer: View
 
 ## Notes
+- UploadFile holding file on disk vs in memory is superseded by my implementation of reading to rows.
+- Alternative architecture: AWS Lambda + NoSQL database
 
 # heb-swa-int
