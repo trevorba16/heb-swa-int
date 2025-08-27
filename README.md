@@ -1,4 +1,4 @@
-# DSR Senior Developer Take-Home Project
+# DSR Take-Home Project
 
 ## Overview
 - Database: PostgreSQL
